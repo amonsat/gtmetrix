@@ -33,11 +33,9 @@ func Init(email, apiKey string) *Client {
 // curl --user user@example.com:e8ddc55d93eb0e8281b255ea236dcc4f \
 // --form url=http://example.com --form x-metrix-adblock=0 \
 // https://gtmetrix.com/api/0.1/test
-func (c *Client) StartTest(checkURL string) (*TestResponse, error) {
+func (c *Client) StartTest(params map[string][]string) (*TestResponse, error) {
 	apiURL := APIURL + "/test"
-	vals := url.Values{
-		"url": {checkURL},
-	}
+	vals := url.Values(params)
 
 	req, err := http.NewRequest("POST", apiURL, strings.NewReader(vals.Encode()))
 	if err != nil {
@@ -45,7 +43,7 @@ func (c *Client) StartTest(checkURL string) (*TestResponse, error) {
 	}
 
 	req.SetBasicAuth(c.email, c.apiKey)
-	// logrus.Info("req: ", req)
+
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, fmt.Errorf("request failed: %v", err)
