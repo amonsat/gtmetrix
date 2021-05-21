@@ -7,20 +7,21 @@ import (
 	"net/http"
 )
 
-type AccountStatusResponse struct {
-	Data struct {
+type LocationsResponse struct {
+	Data []struct {
 		Type       string `json:"type"`
 		Id         string `json:"id"`
 		Attributes struct {
-			ApiCredits int `json:"api_credits"`
-			ApiRefill  int `json:"api_refill"`
+			Name     string `json:"name"`
+			Default  bool   `json:"default"`
+			Browsers []int  `json:"browsers"`
 		} `json:"attributes"`
 	} `json:"data"`
 }
 
-//GetAccountStatus - Get the current account details
-func (c *Client) GetAccountStatus() (*AccountStatusResponse, error) {
-	endpoint := c.opt.ApiUrl + "/status"
+// GetLocations - Get a list of available test locations
+func (c *Client) GetLocations() (*LocationsResponse, error) {
+	endpoint := c.opt.ApiUrl + "/locations"
 
 	req, err := c.NewRequest(http.MethodGet, endpoint, nil)
 	if err != nil {
@@ -44,7 +45,7 @@ func (c *Client) GetAccountStatus() (*AccountStatusResponse, error) {
 		return nil, fmt.Errorf("request failed: %v, %v", resp.Status, data)
 	}
 
-	var data AccountStatusResponse
+	var data LocationsResponse
 	err = json.Unmarshal(body, &data)
 	if err != nil {
 		return nil, fmt.Errorf("unmarshal response failed: %v", err)

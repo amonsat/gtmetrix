@@ -29,7 +29,7 @@ func TestGTMetrix(t *testing.T) {
 
 		fmt.Printf("test started - resp: %+v\n", resp)
 
-		if testResp, err := c.GetTest(resp.Data.Id); assert.NoError(t, err) {
+		if testResp, _, err := c.GetTest(resp.Data.Id); assert.NoError(t, err) {
 			fmt.Println(testResp)
 		}
 	}

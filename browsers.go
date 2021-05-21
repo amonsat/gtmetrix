@@ -7,20 +7,32 @@ import (
 	"net/http"
 )
 
-type AccountStatusResponse struct {
-	Data struct {
+type BrowsersResponse struct {
+	Data []struct {
 		Type       string `json:"type"`
 		Id         string `json:"id"`
 		Attributes struct {
-			ApiCredits int `json:"api_credits"`
-			ApiRefill  int `json:"api_refill"`
+			Dns        bool   `json:"dns"`
+			Cookies    bool   `json:"cookies"`
+			Adblock    bool   `json:"adblock"`
+			HttpAuth   bool   `json:"http_auth"`
+			Video      bool   `json:"video"`
+			UserAgent  bool   `json:"user_agent"`
+			Browser    string `json:"browser"`
+			Name       string `json:"name"`
+			Device     string `json:"device"`
+			Lighthouse bool   `json:"lighthouse"`
+			Resolution bool   `json:"resolution"`
+			Filtering  bool   `json:"filtering"`
+			Throttle   bool   `json:"throttle"`
+			Platform   string `json:"platform"`
 		} `json:"attributes"`
 	} `json:"data"`
 }
 
-//GetAccountStatus - Get the current account details
-func (c *Client) GetAccountStatus() (*AccountStatusResponse, error) {
-	endpoint := c.opt.ApiUrl + "/status"
+// GetBrowsers - Get a list of available browsers. This list is limited to the test browsers currently available to you.
+func (c *Client) GetBrowsers() (*BrowsersResponse, error) {
+	endpoint := c.opt.ApiUrl + "/locations"
 
 	req, err := c.NewRequest(http.MethodGet, endpoint, nil)
 	if err != nil {
@@ -44,7 +56,7 @@ func (c *Client) GetAccountStatus() (*AccountStatusResponse, error) {
 		return nil, fmt.Errorf("request failed: %v, %v", resp.Status, data)
 	}
 
-	var data AccountStatusResponse
+	var data BrowsersResponse
 	err = json.Unmarshal(body, &data)
 	if err != nil {
 		return nil, fmt.Errorf("unmarshal response failed: %v", err)
