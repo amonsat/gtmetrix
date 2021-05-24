@@ -22,7 +22,7 @@ func TestGTMetrix(t *testing.T) {
 		return
 	}
 
-	params := &TestRequestParams{Url: "https://golang.org"}
+	params := &TestRequestParams{Url: "https://golang.org", Report: ReportTypeLighthouseAndLegacy}
 	if resp, err := c.StartTest(params); assert.NoError(t, err) {
 		assert.Equal(t, resp.Data.Type, "test")
 		assert.Equal(t, resp.Data.Attributes.Source, "api")

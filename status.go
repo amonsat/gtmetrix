@@ -12,8 +12,8 @@ type AccountStatusResponse struct {
 		Type       string `json:"type"`
 		Id         string `json:"id"`
 		Attributes struct {
-			ApiCredits int `json:"api_credits"`
-			ApiRefill  int `json:"api_refill"`
+			ApiCredits float32 `json:"api_credits"`
+			ApiRefill  float32 `json:"api_refill"`
 		} `json:"attributes"`
 	} `json:"data"`
 }

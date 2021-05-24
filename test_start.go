@@ -96,8 +96,8 @@ type TestResponse struct {
 		} `json:"attributes"`
 	} `json:"data"`
 	Meta struct {
-		CreditsLeft int `json:"credits_left"`
-		CreditsUsed int `json:"credits_used"`
+		CreditsLeft float32 `json:"credits_left"`
+		CreditsUsed float32 `json:"credits_used"`
 	} `json:"meta"`
 	Links struct {
 		Self string `json:"self"`
