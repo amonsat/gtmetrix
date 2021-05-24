@@ -39,6 +39,9 @@ type ReportResponce struct {
 			OnloadDuration           int     `json:"onload_duration"`
 			CumulativeLayoutShift    float64 `json:"cumulative_layout_shift"`
 			ConnectDuration          int     `json:"connect_duration"`
+			//legacy
+			PagespeedScore int `json:"pagespeed_score"`
+			YslowScore     int `json:"yslow_score"`
 		} `json:"attributes"`
 		Links struct {
 			OptimizedImages string `json:"optimized_images"`
@@ -47,6 +50,10 @@ type ReportResponce struct {
 			Lighthouse      string `json:"lighthouse"`
 			ReportUrl       string `json:"report_url"`
 			Screenshot      string `json:"screenshot"`
+			//legacy
+			Pagespeed      string `json:"pagespeed"`
+			PagespeedFiles string `json:"pagespeed_files"`
+			Yslow          string `json:"yslow"`
 		} `json:"links"`
 	} `json:"data"`
 }
