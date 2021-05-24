@@ -1,4 +1,4 @@
-module gtmetrix
+module github.com/amonsat/gtmetrix
 
 go 1.16
 
