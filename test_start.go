@@ -88,11 +88,12 @@ type TestResponse struct {
 		Type       string `json:"type"`
 		Id         string `json:"id"`
 		Attributes struct {
-			Source   string `json:"source"`
-			Location int    `json:"location"`
-			Browser  int    `json:"browser"`
-			State    string `json:"state"`
-			Created  int    `json:"created"`
+			Source   string        `json:"source"`
+			Location int           `json:"location"`
+			Browser  int           `json:"browser"`
+			State    TestStateType `json:"state"`
+			Created  int           `json:"created"`
+			Error    string        `json:"error,omitempty"`
 		} `json:"attributes"`
 	} `json:"data"`
 	Meta struct {

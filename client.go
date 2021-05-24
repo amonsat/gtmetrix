@@ -34,6 +34,9 @@ func NewClient(opt *Options) (*Client, error) {
 		opt: opt,
 		httpClient: &http.Client{
 			Timeout: httpTimeout,
+			CheckRedirect: func(req *http.Request, via []*http.Request) error {
+				return http.ErrUseLastResponse
+			},
 		},
 	}, nil
 }

@@ -59,10 +59,14 @@ type ReportResponce struct {
 }
 
 // GetReport - get report by reportID
-func (c *Client) GetReport(reportID string) (*ReportResponce, error) {
-	endpoint := c.opt.ApiUrl + "/reports/" + reportID
+func (c *Client) GetReport(id string) (*ReportResponce, error) {
+	endpoint := c.opt.ApiUrl + "/reports/" + id
+	return c.GetReportByLink(endpoint)
+}
 
-	req, err := c.NewRequest(http.MethodGet, endpoint, nil)
+// GetReportByLink - get report by reportID
+func (c *Client) GetReportByLink(link string) (*ReportResponce, error) {
+	req, err := c.NewRequest(http.MethodGet, link, nil)
 	if err != nil {
 		return nil, fmt.Errorf("create request failed: %v", err)
 	}
