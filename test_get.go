@@ -19,6 +19,7 @@ type TestGetResponse struct {
 			Started  int    `json:"started"`
 			Finished int    `json:"finished"`
 			State    string `json:"state"`
+			Error    string `json:"error,omitempty"`
 		} `json:"attributes"`
 		Links struct {
 			Report string `json:"report"`
