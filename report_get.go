@@ -12,11 +12,14 @@ type ReportResponce struct {
 		Id         string `json:"id"`
 		Type       string `json:"type"`
 		Attributes struct {
-			StructureScore           int     `json:"structure_score"`
+			Browser                  string  `json:"browser"`
+			Location                 string  `json:"location"`
 			Source                   string  `json:"source"`
+			GtmetrixGrade            string  `json:"gtmetrix_grade"`
+			CumulativeLayoutShift    float64 `json:"cumulative_layout_shift"`
+			StructureScore           int     `json:"structure_score"`
 			SpeedIndex               int     `json:"speed_index"`
 			OnloadTime               int     `json:"onload_time"`
-			Browser                  int     `json:"browser"`
 			RedirectDuration         int     `json:"redirect_duration"`
 			FirstPaintTime           int     `json:"first_paint_time"`
 			DomContentLoadedDuration int     `json:"dom_content_loaded_duration"`
@@ -24,8 +27,6 @@ type ReportResponce struct {
 			DomInteractiveTime       int     `json:"dom_interactive_time"`
 			PageRequests             int     `json:"page_requests"`
 			PageBytes                int     `json:"page_bytes"`
-			GtmetrixGrade            string  `json:"gtmetrix_grade"`
-			Location                 int     `json:"location"`
 			HtmlBytes                int     `json:"html_bytes"`
 			FirstContentfulPaint     int     `json:"first_contentful_paint"`
 			PerformanceScore         int     `json:"performance_score"`
@@ -37,7 +38,6 @@ type ReportResponce struct {
 			RumSpeedIndex            int     `json:"rum_speed_index"`
 			BackendDuration          int     `json:"backend_duration"`
 			OnloadDuration           int     `json:"onload_duration"`
-			CumulativeLayoutShift    float64 `json:"cumulative_layout_shift"`
 			ConnectDuration          int     `json:"connect_duration"`
 			//legacy
 			PagespeedScore int `json:"pagespeed_score"`

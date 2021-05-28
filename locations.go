@@ -12,9 +12,9 @@ type LocationsResponse struct {
 		Type       string `json:"type"`
 		Id         string `json:"id"`
 		Attributes struct {
-			Name     string `json:"name"`
-			Default  bool   `json:"default"`
-			Browsers []int  `json:"browsers"`
+			Name     string   `json:"name"`
+			Default  bool     `json:"default"`
+			Browsers []string `json:"browsers"`
 		} `json:"attributes"`
 	} `json:"data"`
 }

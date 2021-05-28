@@ -12,14 +12,14 @@ type TestGetResponse struct {
 		Id         string `json:"id"`
 		Type       string `json:"type"`
 		Attributes struct {
-			Source   string `json:"source"`
-			Created  int    `json:"created"`
-			Location int    `json:"location"`
-			Browser  int    `json:"browser"`
-			Started  int    `json:"started"`
-			Finished int    `json:"finished"`
 			State    string `json:"state"`
 			Error    string `json:"error,omitempty"`
+			Browser  string `json:"browser"`
+			Location string `json:"location"`
+			Source   string `json:"source"`
+			Created  int    `json:"created"`
+			Started  int    `json:"started"`
+			Finished int    `json:"finished"`
 		} `json:"attributes"`
 		Links struct {
 			Report string `json:"report"`

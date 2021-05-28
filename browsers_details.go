@@ -12,20 +12,20 @@ type BrowserDetailsResponse struct {
 		Type       string `json:"type"`
 		Id         string `json:"id"`
 		Attributes struct {
+			Name       string `json:"name"`
+			Browser    string `json:"browser"`
+			Platform   string `json:"platform"`
+			Device     string `json:"device"`
 			Dns        bool   `json:"dns"`
 			Cookies    bool   `json:"cookies"`
 			Adblock    bool   `json:"adblock"`
 			HttpAuth   bool   `json:"http_auth"`
 			Video      bool   `json:"video"`
 			UserAgent  bool   `json:"user_agent"`
-			Browser    string `json:"browser"`
-			Name       string `json:"name"`
-			Device     string `json:"device"`
 			Lighthouse bool   `json:"lighthouse"`
 			Resolution bool   `json:"resolution"`
 			Filtering  bool   `json:"filtering"`
 			Throttle   bool   `json:"throttle"`
-			Platform   string `json:"platform"`
 		} `json:"attributes"`
 	} `json:"data"`
 }
