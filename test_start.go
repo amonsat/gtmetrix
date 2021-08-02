@@ -109,7 +109,6 @@ func newTestRequest(params *TestRequestParams) *TestRequest {
 	r := &TestRequest{}
 	r.Data.Type = "test"
 	r.Data.Attributes = *params
-	fmt.Println("req: ", r)
 	return r
 }
 
